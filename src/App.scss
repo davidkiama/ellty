@@ -1,72 +1,91 @@
-.frame {
-  width: 300px;
-  background: #fff;
-  border-radius: 12px;
-  padding: 16px 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+/* Reset & Base */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%; // 1rem = 10px
+}
+
+body {
   font-family: "Inter", sans-serif;
+  font-size: 1.4rem;
+  line-height: 1.7;
+  background-color: #f5f5f5;
+}
+
+/* Layout */
+#container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.frame {
+  width: 30rem;
+  background: #fff;
+  border-radius: 1.2rem;
+  padding: 1.6rem 2rem;
+  box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.1);
 
   .pages-content {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 1.2rem;
   }
 
   .checkbox-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 6px 0;
+    padding: 0.6rem 0;
     cursor: pointer;
-    transition: all 0.2s ease;
-    border-radius: 6px;
+    border-radius: 0.6rem;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
 
-    // Default hover - background only
     &:hover:not(.disabled) {
       background: #f9f9f9;
     }
 
-    // Checked hover - increase fill brightness
     &.checked:hover:not(.disabled) {
-      .checked-svg rect {
-        fill: #2469f6;
-        transition: fill 0.2s ease;
+      .checkbox-icon {
+        filter: brightness(1.4);
       }
     }
 
-    // Active/pressing state - add subtle shadow
     &:active:not(.disabled) {
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.1);
     }
 
-    // Disabled state - add shadow on click only
     &.disabled {
       cursor: not-allowed;
       opacity: 0.6;
-
-      &:active {
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      }
     }
   }
 
   .checkbox-label {
     color: #333;
-    font-size: 14px;
+    font-size: 1.4rem;
   }
 
-  .checked-svg {
-    rect {
-      transition: fill 0.2s ease;
-    }
+  .checkbox-icon {
+    width: 2rem;
+    height: 2rem;
+    transition: filter 0.2s ease;
   }
 
   .done-button {
-    margin-top: 16px;
+    margin-top: 1.6rem;
     width: 100%;
-    padding: 10px 0;
+    padding: 1rem 0;
     border: none;
-    border-radius: 6px;
+    border-radius: 0.6rem;
     background: #ffce42;
     color: #222;
     font-weight: 500;
