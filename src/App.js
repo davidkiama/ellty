@@ -41,17 +41,22 @@ function App() {
             onClick={toggleAllPages}
           >
             <span className="checkbox-label">All pages</span>
-            <img
-              src={isAllSelected ? "/svg/checkbox-enabled.svg" : "/svg/checkbox-default.svg"}
-              alt="checkbox"
-              className="checkbox-icon"
-            />
+
+            <div class="checkbox-wrapper">
+              <img
+                src={isAllSelected ? "/svg/checkbox-enabled.svg" : "/svg/checkbox-default.svg"}
+                alt="checkbox"
+                className="checkbox-icon"
+              />
+            </div>
           </div>
 
           {/* Page 1 - Disabled */}
           <div className="checkbox-item ">
             <span className="checkbox-label">Page 1</span>
-            <img src={getCheckboxSrc(1)} alt="checkbox" className="checkbox-icon" />
+            <div class="checkbox-wrapper">
+              <img src={getCheckboxSrc(1)} alt="checkbox" className="checkbox-icon" />
+            </div>
           </div>
 
           {/* Pages 2–4 */}
@@ -62,7 +67,10 @@ function App() {
               onClick={() => togglePage(pageNum)}
             >
               <span className="checkbox-label">Page {pageNum}</span>
-              <img src={getCheckboxSrc(pageNum)} alt="checkbox" className="checkbox-icon" />
+
+              <div class="checkbox-wrapper">
+                <img src={getCheckboxSrc(pageNum)} alt="checkbox" className="checkbox-icon" />
+              </div>
             </div>
           ))}
 
