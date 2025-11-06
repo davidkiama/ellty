@@ -1,0 +1,84 @@
+.frame {
+  width: 300px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: "Inter", sans-serif;
+
+  .pages-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .checkbox-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 6px;
+
+    // Default hover - background only
+    &:hover:not(.disabled) {
+      background: #f9f9f9;
+    }
+
+    // Checked hover - increase fill brightness
+    &.checked:hover:not(.disabled) {
+      .checked-svg rect {
+        fill: #2469f6;
+        transition: fill 0.2s ease;
+      }
+    }
+
+    // Active/pressing state - add subtle shadow
+    &:active:not(.disabled) {
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    // Disabled state - add shadow on click only
+    &.disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+
+      &:active {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+
+  .checkbox-label {
+    color: #333;
+    font-size: 14px;
+  }
+
+  .checked-svg {
+    rect {
+      transition: fill 0.2s ease;
+    }
+  }
+
+  .done-button {
+    margin-top: 16px;
+    width: 100%;
+    padding: 10px 0;
+    border: none;
+    border-radius: 6px;
+    background: #ffce42;
+    color: #222;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: #ffd95a;
+    }
+
+    &:active {
+      background: #f3c32d;
+    }
+  }
+}
