@@ -100,4 +100,9 @@ body {
       background: #f3c32d;
     }
   }
+
+  .checkbox-item:active:not(.disabled) .checkbox-icon {
+    box-shadow: 0 0 0.4rem 0.2rem hsla(0, 0%, 7%, 0.4);
+    border-radius: 0.4rem; // so the glow matches the icon edges
+  }
 }
