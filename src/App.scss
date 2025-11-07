@@ -1,4 +1,14 @@
-/* Reset & Base */
+:root {
+  --color-bg: #f5f5f5;
+  --color-white: #ffffff;
+  --color-border: #cdcdcd;
+  --color-hover: #f9f9f9;
+  --color-pressed: #cbd2e0;
+  --color-shadow: rgba(0, 0, 0, 0.1);
+  --color-btn: #ffd84d;
+  --color-btn-hover: #ffce22;
+}
+
 *,
 *::before,
 *::after {
@@ -15,13 +25,11 @@ body {
   font-family: "Inter", sans-serif;
   font-size: 1.4rem;
   line-height: 1.7;
-  background-color: #f5f5f5;
+  background-color: var(--color-bg);
 }
 
-/* Layout */
 #container {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
@@ -29,38 +37,55 @@ body {
 
 .frame {
   width: 30rem;
-  background: #fff;
+  background: var(--color-white);
   border-radius: 1.2rem;
   padding: 1.6rem 2rem;
-  box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.4rem 1.2rem var(--color-shadow);
+  transition: all 0.2s ease-in-out;
+
+  @media (max-width: 400px) {
+    width: 15rem;
+  }
 
   .pages-content {
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
+
+    @media (max-width: 400px) {
+      align-items: center;
+    }
   }
 
   .checkbox-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.6rem 0;
+    padding: 0.6rem 0.3rem;
+    position: relative;
     cursor: pointer;
-    border-radius: 0.6rem;
-    transition: background 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease-in-out;
+
+    &:first-child::after,
+    &:last-child::after {
+      content: "";
+      position: absolute;
+      bottom: -0.8rem;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: var(--color-border);
+    }
 
     &:hover:not(.disabled) {
-      background: #f9f9f9;
+      background: var(--color-hover);
     }
 
     &.checked:hover:not(.disabled) {
       .checkbox-icon {
         filter: brightness(1.4);
       }
-    }
-
-    &:active:not(.disabled) {
-      box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.1);
     }
 
     &.disabled {
@@ -70,8 +95,12 @@ body {
   }
 
   .checkbox-label {
-    color: #333;
     font-size: 1.4rem;
+    transition: color 0.2s ease;
+
+    @media (max-width: 400px) {
+      display: none;
+    }
   }
 
   .checkbox-wrapper {
@@ -86,16 +115,16 @@ body {
       left: 50%;
       width: 2.3rem;
       height: 2.3rem;
-      background: #cbd2e0;
+      background: var(--color-pressed);
       border-radius: 0.4rem;
       transform: translate(-50%, -50%);
-      opacity: 0; // hidden by default
+      opacity: 0;
       z-index: 1;
-      transition: opacity 0.15s ease;
+      transition: opacity 0.15s ease-in-out;
     }
   }
 
-  /* Show background only WHILE clicking */
+  /* Show pressed background only WHILE clicking */
   .checkbox-item:active:not(.disabled) .checkbox-wrapper::before {
     opacity: 1;
   }
@@ -107,33 +136,25 @@ body {
     z-index: 1;
   }
 
+  /* =====================================
+     Done Button
+  ===================================== */
   .done-button {
     margin-top: 1.6rem;
     width: 100%;
     padding: 1rem 0;
     border: none;
-    border-radius: 0.6rem;
-    background: #ffce42;
-    color: #222;
-    font-weight: 500;
+    border-radius: 0.5rem;
+    background: var(--color-btn);
     cursor: pointer;
-    transition: background 0.2s ease;
+    transition: background 0.2s ease-in-out;
 
     &:hover {
-      background: #ffd95a;
+      background: var(--color-btn-hover);
     }
 
     &:active {
-      background: #f3c32d;
+      background: var(--color-btn);
     }
-  }
-
-  .checkbox-item:active:not(.disabled) .checkbox-icon {
-    box-shadow: 1.4rem 2rem 0.4rem 0 #cbd2e0;
-    border-radius: 0.4rem; // so the glow matches the icon edges
-    // filter: drop-shadow(1.5px 1.5px 0 rgba(36, 105, 246, 0.1));
-
-    // box-shadow: 0 0.2rem 0.4rem hsla(0, 0%, 0%, 0.25);
-    box-shadow: 2px 3px 8px #eee;
   }
 }

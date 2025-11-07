@@ -73,11 +73,11 @@ function App() {
               </div>
             </div>
           ))}
-
-          <button className="done-button" onClick={handleDone}>
-            Done
-          </button>
         </div>
+
+        <button className="done-button" onClick={handleDone}>
+          Done
+        </button>
       </div>
     </div>
   );
